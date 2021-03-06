@@ -19,12 +19,13 @@ public class Application {
     private EmployeeRep employeeRep = new EmployeeRep(db);
     private CaseRep caseRep = new CaseRep(db);
     private CrimeRep crimeRep = new CrimeRep(db);
+    CrimeController crimeController = new CrimeController(crimeRep);
     EmployeeController employeeController = new EmployeeController(employeeRep);
     CaseController caseController = new CaseController(caseRep);
-    CrimeController crimeController = new CrimeController(crimeRep);
+
 
     public void start() {
-        while (!false) {//while that is not false
+        while (true) {//while that is not false
             System.out.println("1. Operation with FBI employee");
             System.out.println("2. Operation with cases");
             System.out.println("3. Operation with criminals");
@@ -40,7 +41,11 @@ public class Application {
                 }
                 if (option == 3) {
                     consoleCriminal();
-                } else {
+                }
+                if (option == 4) {
+                    System.exit(0);
+                }
+                else {
                     break;//program is gonna finish if user push "wrong" button
                 }
             } catch (InputMismatchException e) {
@@ -52,7 +57,7 @@ public class Application {
         }
     }
     public void consoleFBI() {
-        while (!false) {
+        while (true) {
             System.out.println("What do you want to do?");
             System.out.println("1. Add new employee to Database");
             System.out.println("2. Get FBI employee's information by id");
@@ -63,7 +68,7 @@ public class Application {
             System.out.println("7. Get list of all of employees who have ever worked in FBI");
             System.out.println("8. Get list of all of employees who still work in FBI");
             System.out.println("9. Dismiss an FBI employee");
-            System.out.println("10. Exit");
+            System.out.println("10. Back to menu");
             try {
                 int option1 = scanner.nextInt();
                 if (option1 == 1) {
@@ -93,8 +98,11 @@ public class Application {
                 if(option1==9){
                     kickEmp();
                 }
+                if(option1==10){
+                    start();
+                }
                 else {
-                    break;//program is gonna finish if user push "wrong" button
+                    break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error!");
@@ -185,7 +193,7 @@ public class Application {
         System.out.println(response);
     }
     public  void consoleCriminal(){
-        while (!false) {
+        while (true) {
             System.out.println("What do you want to do?");
             System.out.println("1. Add new criminal to Database");
             System.out.println("2. Get criminal's information by id");
@@ -193,6 +201,7 @@ public class Application {
             System.out.println("4. Get list of all Criminals in database");
             System.out.println("5. Change the status of a wanted criminal");
             System.out.println("6. Get criminals over a certain age");
+            System.out.println("7. Back to menu");
             try {
                 int option2 = scanner.nextInt();
                 if (option2 == 1) {
@@ -212,6 +221,9 @@ public class Application {
                 }
                 if (option2 == 6){
                     criage();
+                }
+                if (option2 == 7){
+                    start();
                 }
                 else {
                     break;
@@ -273,7 +285,7 @@ public class Application {
        System.out.println(response);
    }
     public void consoleCases(){
-        while (!false) {
+        while (true) {
             System.out.println("What do you want to do?");
             System.out.println("1. Add new case to Database");
             System.out.println("2. Get case's information by id");
@@ -285,7 +297,7 @@ public class Application {
                 if(option3 == 2){
                     consoleCaseId();
                 }
-                    else {
+                else {
                     break;
                 }
             } catch (InputMismatchException e) {
