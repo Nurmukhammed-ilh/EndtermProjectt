@@ -1,12 +1,13 @@
 package com.company.entities;
 
-public class Criminals {
+public class Criminals { //creation class
     private int CriId;
     private String CriName;
     private String article;
     private int CriAge;
     private boolean wanted;
 
+    //instructors
     public Criminals() {
     }
     public Criminals(int CriId, String CriName, String article, int CriAge, boolean wanted) {
@@ -22,7 +23,7 @@ public class Criminals {
         setCriAge(CriAge);
         setWanted(wanted);
     }
-
+//get-set - to access this class and assign values
     public int getCriId() {
         return CriId;
     }
