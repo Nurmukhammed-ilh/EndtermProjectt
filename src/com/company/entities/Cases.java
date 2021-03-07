@@ -1,10 +1,11 @@
 package com.company.entities;
 
-public class Cases {
+public class Cases { //class creation
     private int investCase;
     private String name;
     private int idCase;
 
+    //instructors
     public Cases() {
     }
     public Cases(int idCase, String name, int investCase) {
@@ -16,7 +17,7 @@ public class Cases {
         setName(name);
         setInvestCase(investCase);
     }
-
+//get-set - to access this class and assign values
     public int getIdCase() {
         return idCase;
     }
