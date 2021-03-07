@@ -20,7 +20,7 @@ public class CrimeRep extends Criminals implements ICrimeRep {
         return "The criminal with ID "+getCriAge()+", is wanted: "+isWanted();
     }
     @Override
-    public boolean addCriminal(Criminals criminals) {
+    public boolean addCriminal(Criminals criminals) { //method to add a new criminal
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -44,7 +44,7 @@ public class CrimeRep extends Criminals implements ICrimeRep {
                 throwables.printStackTrace();}
         }return false;}
 
-    public Criminals getCriminalId(int id){
+    public Criminals getCriminalId(int id){ //display criminal by his id
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -72,10 +72,10 @@ public class CrimeRep extends Criminals implements ICrimeRep {
         }return null;}
 
 
-    public List<Criminals> getAllCriCri(String article){
+    public List<Criminals> getAllCriCri(String article){ //display a criminal by his article(case)
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "select * from criminal where article=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, article);
@@ -114,10 +114,10 @@ public class CrimeRep extends Criminals implements ICrimeRep {
         return null;
     }
     @Override
-    public List<Criminals> getAllCriminal(){
+    public List<Criminals> getAllCriminal(){ //display a list of all criminals
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "select * from criminal";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -155,10 +155,10 @@ public class CrimeRep extends Criminals implements ICrimeRep {
         return null;
     }
 
-    public boolean crichange(int id, boolean wanted){
+    public boolean crichange(int id, boolean wanted){ //method to changing a criminal's status(wanted or not)
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "update criminal set wanted =? where criid=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setBoolean(1, wanted);
@@ -177,10 +177,10 @@ public class CrimeRep extends Criminals implements ICrimeRep {
         }return false;
     }
 
-        public List<Criminals> criage(int age){
+        public List<Criminals> criage(int age){ //display a list of criminals whose age higher than entered
             Connection con = null;
             try {
-                con = db.getConnection();
+                con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
                 String sql = "select * from criminal where criage>?";
                 PreparedStatement st = con.prepareStatement(sql);
                 st.setInt(1,age);
