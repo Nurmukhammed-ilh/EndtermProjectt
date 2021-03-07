@@ -13,7 +13,7 @@ import com.company.repositories.EmployeeRep;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Application {
+public class Application { //creation class
     private Scanner scanner = new Scanner(System.in);
     private IDB db = new PostgresDB();
     private EmployeeRep employeeRep = new EmployeeRep(db);
@@ -56,7 +56,7 @@ public class Application {
             }
         }
     }
-    public void consoleFBI() {
+    public void consoleFBI() { //method with options for employee class
         while (true) {
             System.out.println("   What do you want to do?");
             System.out.println("1. Add new employee to Database");
@@ -69,7 +69,7 @@ public class Application {
             System.out.println("8. Get list of all of employees who still work in FBI");
             System.out.println("9. Dismiss an FBI employee");
             System.out.println("10. Back to menu");
-            try {
+            try { //options which user can choose
                 int option1 = scanner.nextInt();
                 if (option1 == 1) {
                     consoleFBIadd();
@@ -102,7 +102,7 @@ public class Application {
                     start();
                 }
                 else {
-                    break;
+                    break; //program is gonna finish if user push "wrong" button
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error!");
@@ -112,7 +112,7 @@ public class Application {
             }
         }
     }
-    public void consoleFBIadd() {
+    public void consoleFBIadd() { //method for option to add employee
         System.out.println("Adding new FBI employee to database: ");
         System.out.println("Enter id of employee");
         int id = scanner.nextInt();
@@ -135,28 +135,28 @@ public class Application {
         String response = employeeController.addEmp(id,name,surname,gender,age,salary,position,dateAdoption,dismissalDate);
         System.out.println(response);
     }
- public void consoleFBIid(){
+ public void consoleFBIid(){ //finding employee by id
      System.out.println("Getting FBI employee by ID:");
      System.out.println("Enter id of employee: ");
      int id= scanner.nextInt();
      String response = employeeController.getEmpById(id);
      System.out.println(response);
  }
-    public void consoleFBIpos() {
+    public void consoleFBIpos() { //change position of employee
         System.out.println("Getting FBI employee by position:");
         System.out.println("Enter position of employee: ");
         String position = scanner.next();
         String response = employeeController.getEmpByPos(position);
         System.out.println(response);
     }
-    public void consoleFBIdis(){
+    public void consoleFBIdis(){ //delete employee by his id
         System.out.println("Deleting FBI employee's information by id:");
         System.out.println("Enter id of employee: ");
         int id = scanner.nextInt();
         String response = employeeController.disEmp(id);
         System.out.println(response);
     }
-    public void consoleFBIchange(){
+    public void consoleFBIchange(){ //changing employees salary
         System.out.println("Changing salary of FBI employee by id:");
         System.out.println("Enter new salary of employee: ");
         int cash=scanner.nextInt();
@@ -165,7 +165,7 @@ public class Application {
         String response = employeeController.changeEmp(cash,id);
         System.out.println(response);
     }
-    public void promoteEmployee(){
+    public void promoteEmployee(){ //promotion employee by id
         System.out.println("Promoting FBI employee by id: ");
         System.out.println("Enter id of employee: ");
         int id = scanner.nextInt();
@@ -174,17 +174,17 @@ public class Application {
         String response = employeeController.promEmp(id,position);
         System.out.println(response);
     }
-    public void getAllEmp(){
+    public void getAllEmp(){ //list of all employees
         System.out.println("Getting list of all employee that ever worked here...");
         String response = employeeController.getAllEmployee();
         System.out.println(response);
     }
-    public void getAllEmpRel(){
+    public void getAllEmpRel(){ //employees who are still work here
         System.out.println("Getting list of all employee that still work in FBI...");
         String response = employeeController.getAllEmployeeRel();
         System.out.println(response);
     }
-    public void kickEmp(){
+    public void kickEmp(){ //when employee was dismissal
         System.out.println("Enter current date (dd.mm.yyyy)");
         String dismissaldate=scanner.next();
         System.out.println("Enter ID of employee to dismiss");
@@ -192,7 +192,7 @@ public class Application {
         String response= employeeController.kickEmp(dismissaldate,id);
         System.out.println(response);
     }
-    public  void consoleCriminal(){
+    public  void consoleCriminal(){ //actions with criminals
         while (true) {
             System.out.println("   What do you want to do?");
             System.out.println("1. Add new criminal to Database");
@@ -202,7 +202,7 @@ public class Application {
             System.out.println("5. Change the status of a wanted criminal");
             System.out.println("6. Get criminals over a certain age");
             System.out.println("7. Back to menu");
-            try {
+            try { //options which user can choose
                 int option2 = scanner.nextInt();
                 if (option2 == 1) {
                     consoleCrimadd();
@@ -226,7 +226,7 @@ public class Application {
                     start();
                 }
                 else {
-                    break;
+                    break; //program is gonna finish if user push "wrong" button
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error!");
@@ -236,7 +236,7 @@ public class Application {
             }
         }
     }
-    public void consoleCrimadd(){
+    public void consoleCrimadd(){ //add a new criminal
         System.out.println("Adding a new criminal to database");
         System.out.println("Enter id of criminal: ");
         int CriId = scanner.nextInt();
@@ -251,26 +251,26 @@ public class Application {
         String response = crimeController.addCrime(CriId,CriName,article,CriAge,wanted);
         System.out.println(response);
     }
-    public void consoleCrimeid(){
+    public void consoleCrimeid(){ //finding criminal by his id
         System.out.println("Getting criminal's information by id...");
         System.out.println("Enter id of Criminal: ");
         int id= scanner.nextInt();
         String response = crimeController.getCrimeById(id);
         System.out.println(response);
     }
-    public void consoleCrimeCri(){
+    public void consoleCrimeCri(){ //display a criminal by article(case)
         System.out.println("Getting criminal's information by crime...");
         System.out.println("Enter crime of Criminal: ");
         String article= scanner.next();
         String response = crimeController.getCrimeByCri(article);
         System.out.println(response);
     }
-    public void getAllCri(){
+    public void getAllCri(){ //display a list of all criminals
         System.out.println("Getting list of all criminal in database...");
         String response = crimeController.getAllCriminal();
         System.out.println(response);
     }
-    public void crichange(){
+    public void crichange(){ //changing status of criminal(wanted or not)
         System.out.println("Enter the criminal's ID to change the status: ");
         int id=scanner.nextInt();
         System.out.println("Enter the criminal's wanted status: (true/false)");
@@ -278,13 +278,13 @@ public class Application {
         String response = crimeController.crichange(id,wanted);
         System.out.println(response);
     }
-   public void criage(){
+   public void criage(){ //display a criminals whose age higher than entered
        System.out.println("Enter a number to display criminals over that age");
        int age=scanner.nextInt();
        String response = crimeController.criage(age);
        System.out.println(response);
    }
-    public void consoleCases(){
+    public void consoleCases(){ //actions with cases
         while (true) {
             System.out.println("   What do you want to do?");
             System.out.println("1. Add new case to Database");
@@ -294,7 +294,7 @@ public class Application {
             System.out.println("5. Change the FBI employee who is investigating the case");
             System.out.println("6. Get the case case by the ID of an employee who is investigating the case");
             System.out.println("7. Back to menu");
-            try {
+            try { //options which user can choose
                 int option3 = scanner.nextInt();
                 if (option3 == 1) {
                     consoleCaseadd();
@@ -317,8 +317,8 @@ public class Application {
                 if(option3 == 7){
                     start();
                 }
-                else {
-                    break;
+                else { 
+                    break; //program is gonna finish if user push "wrong" button
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error!");
@@ -328,7 +328,7 @@ public class Application {
             }
         }
     }
-    public void consoleCaseadd(){
+    public void consoleCaseadd(){ //adding a new case
         System.out.println("Adding a new case to database...");
         System.out.println("Enter id of case");
         int idCase = scanner.nextInt();
@@ -339,26 +339,26 @@ public class Application {
         String response = caseController.addCase(idCase,name,investCase);
         System.out.println(response);
     }
-    public void consoleCaseId(){
+    public void consoleCaseId(){ //display a case by id
         System.out.println("Getting case's information by id...");
         System.out.println("Enter id of Case: ");
         int id= scanner.nextInt();
         String response = caseController.getCaseById(id);
         System.out.println(response);
     }
-    public void consoleallcase(){
+    public void consoleallcase(){ //display a list of all cases
         System.out.println("Displaying all cases...");
         String response = caseController.getAllCases();
         System.out.println(response);
     }
-    public void casedelete(){
+    public void casedelete(){ //delete case by id
         System.out.println("Deleting a case from the database...");
         System.out.println("Enter the case ID: ");
         int id = scanner.nextInt();
         String response = caseController.disCase(id);
         System.out.println(response);
     }
-    public void fbichange(){
+    public void fbichange(){ //change employee who investigating the case
         System.out.println("Enter the case ID: ");
         int id=scanner.nextInt();
         System.out.println("Enter the ID of the new FBI employee who will handle this case");
@@ -366,7 +366,7 @@ public class Application {
         String response = caseController.fbichang(id,fbiid);
         System.out.println(response);
     }
-    public void caseinvest(){
+    public void caseinvest(){ //display od all cases which investigating by one employee
             System.out.println("Getting all cases investigated by a specific FBI employee...");
             System.out.println("Enter ID of FBI employee");
             int id= scanner.nextInt();
