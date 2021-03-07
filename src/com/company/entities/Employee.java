@@ -1,6 +1,6 @@
 package com.company.entities;
 
-public class Employee {
+public class Employee { //creation class
     private int id;
     private String name;
     private String surname;
@@ -10,6 +10,8 @@ public class Employee {
     private String position;
     private String dateAdoption;
     private String dismissalDate;
+    
+    //instructors
     public Employee(int id, String name, String surname, String gender, int age, int salary, String position){
     }
     public Employee(int id,String name, String surname,String gender,int age,int salary,String position,String dateAdoption,String dismissalDate) {
@@ -37,6 +39,7 @@ public class Employee {
     public Employee() {
     }
 
+    //get-set - to access this class and assign values
     public int getId(){
         return id;
     }
