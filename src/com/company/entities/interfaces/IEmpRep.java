@@ -4,7 +4,7 @@ import com.company.entities.Employee;
 
 import java.util.List;
 
-public interface IEmpRep {
+public interface IEmpRep { //list of actions with class Employee
     boolean addEmployee(Employee employee);
     Employee getEmployeeId(int id);
     Employee getEmployeePos(String position);
