@@ -4,7 +4,7 @@ import com.company.entities.Cases;
 
 import java.util.List;
 
-public interface ICaseRep {
+public interface ICaseRep { //list of actions with class Case
 
     boolean addCase(Cases cases);
 
