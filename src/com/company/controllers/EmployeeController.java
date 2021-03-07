@@ -72,5 +72,4 @@ public class EmployeeController {
         } else
             return "Employee was dismissed";
     }
-
 }

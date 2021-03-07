@@ -1,6 +1,7 @@
 package com.company.repositories;
 
 import com.company.data.interfaces.IDB;
+import com.company.entities.Cases;
 import com.company.entities.Criminals;
 import com.company.entities.interfaces.ICrimeRep;
 
@@ -11,9 +12,13 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CrimeRep implements ICrimeRep {
+public class CrimeRep extends Criminals implements ICrimeRep {
     private final IDB db;
     public CrimeRep(IDB db){this.db= db;}
+
+    public String crimeInfo(){
+        return "The criminal with ID "+getCriAge()+", is wanted: "+isWanted();
+    }
     @Override
     public boolean addCriminal(Criminals criminals) {
         Connection con = null;
@@ -21,11 +26,11 @@ public class CrimeRep implements ICrimeRep {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "INSERT INTO criminal(CriId,CriName,article,CriAge,wanted) VALUES(?,?,?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1, criminals.getCriId());
-            st.setString(2, criminals.getCriName());
-            st.setString(3, criminals.getArticle());
-            st.setInt(4, criminals.getCriAge());
-            st.setBoolean(5, criminals.isWanted());
+            st.setInt(1, getCriId());
+            st.setString(2, getCriName());
+            st.setString(3, getArticle());
+            st.setInt(4, getCriAge());
+            st.setBoolean(5, isWanted());
             st.execute();
             return true;
         } catch (SQLException throwables) {

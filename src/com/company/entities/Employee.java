@@ -10,7 +10,7 @@ public class Employee {
     private String position;
     private String dateAdoption;
     private String dismissalDate;
-    public Employee(){
+    public Employee(int id, String name, String surname, String gender, int age, int salary, String position){
     }
     public Employee(int id,String name, String surname,String gender,int age,int salary,String position,String dateAdoption,String dismissalDate) {
         setId(id);
@@ -33,6 +33,10 @@ public class Employee {
         setDateAdoption(dateAdoption);
         setDismissalDate(dismissalDate);
     }
+
+    public Employee() {
+    }
+
     public int getId(){
         return id;
     }
@@ -88,6 +92,9 @@ public class Employee {
         this.dismissalDate=dismissalDate;
     }
 
+    public String empInfo(){
+        return "FBI employee "+getName()+" gets "+getSalary()+"$ a month";
+    }
     @Override
     public String toString() {
         return "Employee{" +

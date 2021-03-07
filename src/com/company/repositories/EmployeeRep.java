@@ -12,10 +12,13 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EmployeeRep implements IEmpRep {
+public class EmployeeRep extends Employee implements IEmpRep {
     private final IDB db;
     public EmployeeRep(IDB db){this.db= db;}
 
+    public String empInfo(){
+        return "FBI employee "+getName()+"with ID "+getId()+" gets "+getSalary()+"$ per month";
+    }
     @Override
     public boolean addEmployee(Employee employee) {
         Connection con = null;
@@ -23,15 +26,15 @@ public class EmployeeRep implements IEmpRep {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "INSERT INTO employee(id,name,surname,gender,age,salary,position,dateAdoption,dismissalDate) VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
-            st.setInt(1, employee.getId());
-            st.setString(2, employee.getName());
-            st.setString(3, employee.getSurname());
-            st.setString(4, employee.getGender());
-            st.setInt(5, employee.getAge());
-            st.setInt(6, employee.getSalary());
-            st.setString(7, employee.getPosition());
-            st.setString(8, employee.getDateAdoption());
-            st.setString(9, employee.getDismissalDate());
+            st.setInt(1, getId());
+            st.setString(2, getName());
+            st.setString(3, getSurname());
+            st.setString(4, getGender());
+            st.setInt(5,getAge());
+            st.setInt(6, getSalary());
+            st.setString(7, getPosition());
+            st.setString(8, getDateAdoption());
+            st.setString(9, getDismissalDate());
             st.execute();
             return true;
         } catch (SQLException throwables) {

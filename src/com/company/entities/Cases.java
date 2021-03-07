@@ -41,6 +41,10 @@ public class Cases {
         this.investCase = investCase;
     }
 
+    public String caseInfo(){
+        return "FBI employee with id"+ getInvestCase()+"is investigating the case" +getName()+" with ID "+getIdCase();
+    }
+
     @Override
     public String toString() {
         return "Cases{" +

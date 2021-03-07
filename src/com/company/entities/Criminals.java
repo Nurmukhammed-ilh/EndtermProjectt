@@ -63,6 +63,10 @@ public class Criminals {
         this.wanted = wanted;
     }
 
+    public String crimeInfo(){
+        return "The criminal "+getCriName()+" was convicted of "+getArticle();
+    }
+
     @Override
     public String toString() {
         return "Criminals{" +
