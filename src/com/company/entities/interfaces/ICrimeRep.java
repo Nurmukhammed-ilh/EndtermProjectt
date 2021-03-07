@@ -4,7 +4,7 @@ import com.company.entities.Criminals;
 
 import java.util.List;
 
-public interface ICrimeRep {
+public interface ICrimeRep { //list of actions with class Criminals
     boolean addCriminal(Criminals criminals);
     Criminals getCriminalId(int id);
     List<Criminals> getAllCriCri(String article);
