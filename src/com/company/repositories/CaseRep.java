@@ -20,7 +20,7 @@ public class CaseRep extends Cases implements ICaseRep {
         return "Case name: "+ getName()+", ID: "+getIdCase();
     }
     @Override
-    public boolean addCase(Cases cases) {
+    public boolean addCase(Cases cases) { //method to add a new case
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -41,7 +41,7 @@ public class CaseRep extends Cases implements ICaseRep {
             catch (SQLException throwables){
                 throwables.printStackTrace();}
         }return false;}
-    public Cases getCaselId(int id){
+    public Cases getCaselId(int id){ //method to display case by id
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -65,10 +65,10 @@ public class CaseRep extends Cases implements ICaseRep {
             catch (SQLException throwables) {
                 throwables.printStackTrace();}
         }return null;}
-    public List<Cases> getAllCases() {
+    public List<Cases> getAllCases() { //display a list of all cases
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "select * from cases";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -104,10 +104,10 @@ public class CaseRep extends Cases implements ICaseRep {
         }
         return null;
     }
-    public boolean  disCase(int id) {
+    public boolean  disCase(int id) { //delete case
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "DELETE FROM cases WHERE idcase = ?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
@@ -126,10 +126,10 @@ public class CaseRep extends Cases implements ICaseRep {
         }
         return false;
     }
-    public boolean fbichange(int id,int fbiid){
+    public boolean fbichange(int id,int fbiid){ //change name of employee who investigating the case
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "update cases set investcase =? where idcase=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
@@ -147,7 +147,7 @@ public class CaseRep extends Cases implements ICaseRep {
                 throwables.printStackTrace();}
         }return false;
     }
-    public Cases getAllCasesFBIf(int id){
+    public Cases getAllCasesFBIf(int id){ //display case by id of employee
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
