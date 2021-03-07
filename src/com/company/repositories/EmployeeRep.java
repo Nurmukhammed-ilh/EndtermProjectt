@@ -20,7 +20,7 @@ public class EmployeeRep extends Employee implements IEmpRep {
         return "FBI employee "+getName()+"with ID "+getId()+" gets "+getSalary()+"$ per month";
     }
     @Override
-    public boolean addEmployee(Employee employee) {
+    public boolean addEmployee(Employee employee) { //method to add a new employee
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -48,7 +48,7 @@ public class EmployeeRep extends Employee implements IEmpRep {
                 throwables.printStackTrace();}
         }return false;}
 
-    public Employee getEmployeeId(int id){
+    public Employee getEmployeeId(int id){ //display an employee by his id
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -80,7 +80,7 @@ public class EmployeeRep extends Employee implements IEmpRep {
         }return null;}
 
 
-    public Employee getEmployeePos(String position){
+    public Employee getEmployeePos(String position){ //display an employee by his position(profession)
         Connection con = null;
         try {
             con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
@@ -113,10 +113,10 @@ public class EmployeeRep extends Employee implements IEmpRep {
     }
 
 
-    public boolean disEmp(int id) {
+    public boolean disEmp(int id) { //dismissal an employee
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "DELETE FROM employee WHERE id = ?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
@@ -135,10 +135,10 @@ public class EmployeeRep extends Employee implements IEmpRep {
         }
         return false;
     }
-    public boolean changeEmp(int cash, int id){
+    public boolean changeEmp(int cash, int id){ //method for changing a salary of employee by his id
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "update employee set salary =? where id=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, cash);
@@ -156,10 +156,10 @@ public class EmployeeRep extends Employee implements IEmpRep {
                 throwables.printStackTrace();}
         }return false;
     }
-    public boolean promEmp(int id, String position){
+    public boolean promEmp(int id, String position){ //employee promotion by his id
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "update employee set position =? where id=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, position);
@@ -178,10 +178,10 @@ public class EmployeeRep extends Employee implements IEmpRep {
         }return false;
     }
     @Override
-    public List<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployee() { //display a list of all employees
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "select * from employee";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -223,10 +223,10 @@ public class EmployeeRep extends Employee implements IEmpRep {
         }
         return null;
     }
-    public List<Employee> getAllEmployeeRel(){
+    public List<Employee> getAllEmployeeRel(){ //display a list of employees who are still working
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "select * from employee where dismissaldate='null'";
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -268,10 +268,10 @@ public class EmployeeRep extends Employee implements IEmpRep {
         }
         return null;
     }
-    public boolean kickEmp(String dismissaldate, int id) {
+    public boolean kickEmp(String dismissaldate, int id) { //change a date when employee was dismissal
         Connection con = null;
         try {
-            con = db.getConnection();
+            con = db.getConnection(); //the SQL codes will be "copied" to pgadmin4
             String sql = "update employee set dismissaldate =? where id=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, dismissaldate);
