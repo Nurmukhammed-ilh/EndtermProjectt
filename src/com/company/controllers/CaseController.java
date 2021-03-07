@@ -14,26 +14,26 @@ public class CaseController {
         this.repo = repo;
     }
 
-    public String addCase(int idCase, String name, int investCase){
-        Cases cases=new Cases(idCase,name,investCase); //method to add new employee, if we have
+    public String addCase(int idCase, String name, int investCase){ //method to add a new case
+        Cases cases=new Cases(idCase,name,investCase); 
         boolean add = repo.addCase(cases);
         if (add == true) {
             return "Case was successfully added!";
         } else
             return "Case was not added! Something went wrong";
     }
-    public String getCaseById(int id) {
+    public String getCaseById(int id) { //display a case by id
         Cases cases=repo.getCaselId(id);
         if (cases != null) {
             return cases.toString();
         } else
             return "Case was not found!";
     }
-    public String getAllCases(){
+    public String getAllCases(){ //method to display a list of all cases
         List<Cases> list = repo.getAllCases();
-        return (list.size() == 0 ? "Cases were not found!" : list.toString());
+        return (list.size() == 0 ? "Cases were not found!" : list.toString()); 
     }
-    public String disCase(int id){
+    public String disCase(int id){ //method to delete case by entering id
         boolean delete=repo.disCase(id);
         if (delete==false) {
             return "Case was not found! Seems like it does not exist";
