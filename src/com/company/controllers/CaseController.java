@@ -15,7 +15,7 @@ public class CaseController {
     }
 
     public String addCase(int idCase, String name, int investCase){
-        Cases cases=new Cases(idCase,name,investCase);
+        Cases cases=new Cases(idCase,name,investCase); //method to add new employee, if we have
         boolean add = repo.addCase(cases);
         if (add == true) {
             return "Case was successfully added!";
